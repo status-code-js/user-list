@@ -1,5 +1,5 @@
 import React from "react"
-import { Main } from "./Main"
+import { LoadingBlock } from "./LoadingBlock"
 import { User } from "./User"
 
 export const Users = ({ items, isLoading }) => {
@@ -12,14 +12,17 @@ export const Users = ({ items, isLoading }) => {
           <input type="text" placeholder="Find user" />
         </div>
         {isLoading ? (
-          <div className="main-list">
-            <Main />
-            <Main />
-            <Main />
+          <div className="loading-block">
+            <LoadingBlock />
+            <LoadingBlock />
+            <LoadingBlock />
           </div>
         ) : (
           <ul className="user-list">
-            <User />
+            {
+                items.map((obj) => (
+                <User {...obj}/>
+                ))}
           </ul>
         )}
         <button className="btn">Send invitation</button>
